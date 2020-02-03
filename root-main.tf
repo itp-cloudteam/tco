@@ -64,7 +64,7 @@ module "nat_gateway" {
 }
 
 module "my_ec2" {
-source          = "./module/compute/ec2"
+source          = "./modules/compute/ec2"
 ec2_count       = 1
 ami_id          = " ami-09d069a04349dc3cb"
 instance_type   = "t2.micro"
