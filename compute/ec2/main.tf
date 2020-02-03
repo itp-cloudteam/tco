@@ -1,8 +1,11 @@
 
-module "my_ec2" {
-source          = "../module/ec2"
-ec2_count       = 1
-ami_id          = " ami-09d069a04349dc3cb"
-instance_type   = "t2.micro"
-subnet_id       = "${module.my_ec2.subnet_id}"
-}
+resource "aws_instance" "web" {
+  count           = "${var.ec2_count}"
+  ami_id          = "${var.ami_id}"
+  instance_type   = "${var.instance_type}"
+  subnet_id       = "${var.subnet_id}"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+  }
