@@ -1,4 +1,4 @@
- output "eip_id" {
+ output "ids" {
  
    value = aws_eip.eip
   

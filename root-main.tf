@@ -29,7 +29,7 @@ module "subnets" {
 
   source = "./modules/networking/subnets"
   subnets_info = var.subnets_info  
-  vpc_id = module.vpc.id
+  vpc_id = module.vpc.ids
   
 }
 
@@ -42,7 +42,7 @@ module "security_group" {
   source = "./modules/networking/sg"
   
   sg_meta_data = var.sg_meta_data
-  vpc_id = module.vpc.id
+  vpc_id = module.vpc.ids
   
   
 }
@@ -57,7 +57,7 @@ module "security_group_rules" {
 module "igw" {
   source = "./modules/networking/igw"
   igw_info = var.igw_info
-  vpc_id = module.vpc.id
+  vpc_id = module.vpc.ids
   
 
 }
@@ -66,11 +66,11 @@ module "igw" {
 module "nat_gateway" {
 
   source = "./modules/networking/natgw"
-  igw = module.igw.igw_id
+  igw = module.igw.ids
   natgw_info = var.natgw_info
   
   
-  eip_id = module.eip.eip_id
+  eip_id = module.eip.ids
   subnet_id = module.subnets.ids
 
 }
@@ -79,7 +79,7 @@ module "route_tables" {
   
   source = "./modules/networking/route_table"
   route_tables = var.route_tables
-  vpc_id = module.vpc.id
+  vpc_id = module.vpc.ids
 
 }
 
