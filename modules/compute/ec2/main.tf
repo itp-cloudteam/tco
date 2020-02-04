@@ -6,6 +6,6 @@ resource "aws_instance" "web" {
   subnet_id       = "${var.subnet_id}"
 
   tags = {
-    Name = "HelloWorld"
+    Name = "web1"
   }
   }
