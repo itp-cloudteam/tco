@@ -8,13 +8,6 @@ variable "eips" {
 
 }
 
-
-
-
-
-
-
-
 variable "vpc_info" {
 
   type = map
@@ -116,7 +109,7 @@ variable "route_tables" {
   default = {
      #route_type_name = [vpc ,AZ ,environment]
     "private_rt" = ["vpc1","us-west-2a","prod"]
-	"public_rt"  = ["vpc1","us-west-2a","proc"]
+	"public_rt"  = ["vpc1","us-west-2a","prod"]
   
   }
 
@@ -137,7 +130,7 @@ variable "nat_gateway_routes" {
   type = map
   default = {
   
-    "nat_gtw_rt1" = ["public_rt","10.0.3.0/24","natgw1"]
+    "nat_gtw_rt1" = ["private_rt","0.0.0.0/0","natgw1"]
   
   }
 }
