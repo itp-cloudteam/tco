@@ -7,15 +7,11 @@ variable "sg_meta_data" {
 
 variable "vpc_id" {
 
-  type = string 
+  type = map 
 
 }
 
-variable "env" {
 
-  type = string
-  
-}
 
 
 

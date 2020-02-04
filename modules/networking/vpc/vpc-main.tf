@@ -1,10 +1,10 @@
 resource "aws_vpc" "vpc" {
-
-  cidr_block       = var.vpc_cidr
+  for_each         = var.vpc_info
+  cidr_block       = each.value[0]
   instance_tenancy = "dedicated"
   tags = {
   
-    Name = "vpc-${join("",[for i in split("-",var.region): substr(i,0,1)])}-${var.env}"
+    Name = "vpc-${join("",[for i in split("-",each.value[2]): substr(i,0,1)])}-${each.value[1]}"
   }
 
 }

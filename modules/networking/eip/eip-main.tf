@@ -1,3 +1,7 @@
- resource "aws_eip" "nat" {
+ resource "aws_eip" "eip" {
+ 
+ for_each = var.eips
+ 
+ vpc = true 
 
  }

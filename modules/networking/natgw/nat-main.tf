@@ -1,6 +1,7 @@
  resource "aws_nat_gateway" "natgw"{
- 
-   allocation_id = var.eip_id
-   subnet_id = var.subnet_id
+   for_each = var.natgw_info
+   allocation_id = var.eip_id[each.value[0]].id
+   subnet_id = var.subnet_id[each.value[1]].id
+   #depends_on = [var.igw]
   
  }

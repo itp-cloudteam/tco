@@ -1,5 +1,5 @@
  output "eip_id" {
  
-   value = aws_eip.nat.id
+   value = aws_eip.eip
   
  }

@@ -1,5 +1,11 @@
 variable "vpc_id"{
 
-  type = string
+  type = map
+
+}
+
+variable "igw_info" {
+ 
+ type = map
 
 }

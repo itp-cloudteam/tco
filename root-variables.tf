@@ -1,13 +1,39 @@
+variable "eips" {
 
+  type = map
+  default = {
+    "eip1" = ""
+    "eip2" = ""
+  }
+
+}
+
+
+
+
+
+
+
+
+variable "vpc_info" {
+
+  type = map
+  default = {
+    #"vpc name" = [cidr range,environment,region]
+    "vpc1" = ["10.0.0.0/16","prod","eu-west-2"]
+  
+  }
+
+}
 
 
 variable "sg_meta_data" {
 
   type = map
   default = {
-    #sg name = [region,tier,appName]
-    "public_sg" = ["us-east-1","app","tco-web"]
-	"private_sg" = ["us-east-1","db","tco-db"]
+    #sg name = [region,tier,appName,environment]
+    "public_sg" = ["us-east-1","app","tco-web","prod","vpc1"]
+	"private_sg" = ["us-east-1","db","tco-db","prod","vpc1"]
 
    }
 }
@@ -54,17 +80,64 @@ variable "region" {
 
 }
 
-variable "public_subnets_cidr" {
+
+variable "subnets_info" {
   
   type = map
   
   default= {
- 
-	  "subnet1"=["app","eu-west-2a","10.0.1.0/24"]
-	  "subnet2"=["app","eu-west-2b","10.0.2.0/24"]
-	  "subnet3"=["db","eu-west-2c","10.0.3.0/24"]
-	
+      #subnet_name = [ application , region code , cidr block , vpc name , environment ]
+	  "public_subnet1"=["app","eu-west-2a","10.0.1.0/24","vpc1","prod"]
+	  "public_subnet2"=["app","eu-west-2b","10.0.2.0/24","vpc1","prod"]
+	  "private_subnet1"=["db","eu-west-2c","10.0.3.0/24","vpc1","prod"]
+	}
+}
+
+variable "igw_info" {
+  type = map
+  default = {
+    "igw1" = ["vpc1"]
+  }
+}
+variable "natgw_info" {
+  
+  type = map
+  default = {
+    #nat_gateway_name = [eip id , public subnet id,igw id]
+    "natgw1" = ["eip1","public_subnet1","igw1"] 
+  
+  }
+
+}
+
+variable "route_tables" {
+
+  type = map
+  default = {
+     #route_type_name = [vpc ,AZ ,environment]
+    "private_rt" = ["vpc1","us-west-2a","prod"]
+	"public_rt"  = ["vpc1","us-west-2a","proc"]
+  
+  }
+
+}
+
+variable "gateway_routes" {
+
+  type = map
+  default = {
+  
+    "gtw_rt1" = ["public_rt","10.0.3.0/24","igw1"]
+  
   }
 }
 
+variable "nat_gateway_routes" {
 
+  type = map
+  default = {
+  
+    "nat_gtw_rt1" = ["public_rt","10.0.3.0/24","natgw1"]
+  
+  }
+}

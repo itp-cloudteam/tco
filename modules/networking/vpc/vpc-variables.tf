@@ -1,17 +1,8 @@
-variable "vpc_cidr"{
+variable "vpc_info"{
 
-  type = string
+  type = map
   
 }
 
-variable "region" {
 
-  type = string
-  
-}
 
-variable "env" {
-
-  type = string
-
-}

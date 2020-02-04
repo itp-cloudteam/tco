@@ -1,31 +1,48 @@
+provider "aws" {
+  region     = var.region
+  access_key = "AKIAUKV5HPCPDOZCOOGR"
+  secret_key = "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"
+}
+
 module "vpc" {
 
   source = "./modules/networking/vpc"
   
-  vpc_cidr = var.vpc_cidr
-  env = var.environment
-  region = var.region
+  vpc_info = var.vpc_info
+  
+  
     
 }
 
-module "public_subnets" {
 
-  source = "./modules/networking/subnets/public"
-  
-  env = var.environment
-  vpc_id = module.vpc.vpc_id
-  public_subnets_cidr = var.public_subnets_cidr  
-  region = var.region
+module "eip" {
+
+  source = "./modules/networking/eip"
+  eips = var.eips
 }
+
+
+
+module "subnets" {
+
+  source = "./modules/networking/subnets"
+  subnets_info = var.subnets_info  
+  vpc_id = module.vpc.id
+  
+}
+
+
+
+
 
 module "security_group" {
 
   source = "./modules/networking/sg"
   
   sg_meta_data = var.sg_meta_data
-  vpc_id = module.vpc.vpc_id
+  vpc_id = module.vpc.id
   
-  env = var.environment
+  
 }
 
 module "security_group_rules" {
@@ -35,30 +52,43 @@ module "security_group_rules" {
   sg_rules = var.sg_rules  
 }
 
-module "internet_gateway" {
-
+module "igw" {
   source = "./modules/networking/igw"
-  vpc_id = module.vpc.vpc_id
+  igw_info = var.igw_info
+  vpc_id = module.vpc.id
+  
 
 }
 
-module "eip" {
-
-  source = "./modules/networking/eip"
-
-}
-
-module "eip1" {
-
-  source = "./modules/networking/eip"
-
-}
 
 module "nat_gateway" {
 
   source = "./modules/networking/natgw"
+  igw = module.igw.igw_id
+  natgw_info = var.natgw_info
+  
   
   eip_id = module.eip.eip_id
-  subnet_id = module.public_subnets.ids["subnet1"].id
-  
+  subnet_id = module.subnets.ids
+
 }
+
+module "route_tables" {
+  
+  source = "./modules/networking/route_table"
+  route_tables = var.route_tables
+  vpc_id = module.vpc.id
+
+}
+
+module "nat_gateway_routes" {
+
+  source = "./modules/networking/route/nat_gateway"
+  nat_gateway_routes = var.nat_gateway_routes
+  route_table_id = module.route_tables.ids
+  nat_gateway_id     = module.nat_gateway.ids
+
+}
+
+
+

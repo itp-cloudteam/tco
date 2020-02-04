@@ -1,22 +1,11 @@
-output "pub-sub-ids" {
 
-  value = "${module.public_subnets.ids}"
 
+output "vpc" {
+  value = module.vpc.id
+ 
 }
 
-output "sg_info" {
-  
-  value = "${module.security_group.sg_info}"
-
+output "subnet" {
+  value = module.subnets.ids
 }
 
-
-output "eip_out" {
-
-  value = "${module.eip.eip_id}"
-}
-
-output "pub-sub" {
-
-  value = "${module.public_subnets.ids["subnet1"]}"
-}
