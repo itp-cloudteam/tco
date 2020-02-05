@@ -13,7 +13,6 @@ module "vpc" {
   vpc_info = var.vpc_info
   
   
-    
 }
 
 
@@ -91,6 +90,7 @@ module "nat_gateway_routes" {
   nat_gateway_id     = module.nat_gateway.ids
 
 }
+
 
 
 

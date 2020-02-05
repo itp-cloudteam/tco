@@ -1,3 +1,28 @@
+variable "instance_info" {
+  type    = map
+  default = {
+    #"servername" = ["ami","az","subnet","true/false","ostype","env"]
+  
+  }
+}
+
+
+
+variable "ebs_info" {
+  type    = map
+  default = {
+    #"ebs_name" = ["az",size,"servername","env"]
+  }
+
+}
+
+variable "vol_attach_info" {
+  type = map
+  default = {
+    #attachment name = [device_name,ebs_name,servername]
+  }
+}
+
 variable "eips" {
 
   type = map
@@ -79,7 +104,7 @@ variable "subnets_info" {
   type = map
   
   default= {
-      #subnet_name = [ application , region code , cidr block , vpc name , environment ]
+      #subnet_name = [ application , AZ , cidr block , vpc name , environment ]
 	  "public_subnet1"=["app","eu-west-2a","10.0.1.0/24","vpc1","prod"]
 	  "public_subnet2"=["app","eu-west-2b","10.0.2.0/24","vpc1","prod"]
 	  "private_subnet1"=["db","eu-west-2c","10.0.3.0/24","vpc1","prod"]
@@ -120,7 +145,7 @@ variable "gateway_routes" {
   type = map
   default = {
   
-    "gtw_rt1" = ["public_rt","10.0.3.0/24","igw1"]
+    "gtw_rt1" = ["public_rt","0.0.0.0/0","igw1"]
   
   }
 }
