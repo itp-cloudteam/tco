@@ -89,8 +89,3 @@ module "gateway_routes" {
   gateway_id     = module.igw.igw_id
 
 }
-
-
-
-
-
