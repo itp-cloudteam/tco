@@ -1,4 +1,5 @@
 variable "instance_info" {
+  
   type    = map
   default = {
     #"servername" = ["ami","instance type","az","subnet","true/false","ostype","env"]
@@ -9,6 +10,7 @@ variable "instance_info" {
 
 
 variable "ebs_info" {
+  
   type    = map
   default = {
     #"ebs_name" = ["az",size,"servername","env"]
@@ -17,6 +19,7 @@ variable "ebs_info" {
 }
 
 variable "vol_attach_info" {
+  
   type = map
   default = {
     #attachment name = [device_name,ebs_name,servername]
@@ -75,8 +78,7 @@ variable "sg_rules" {
 
 variable "environment" {
 
-  type = string 
-
+  type   = string 
   default = "dev"
 
 }
@@ -84,16 +86,14 @@ variable "environment" {
 
 variable "vpc_cidr" {
 
-  type = string
-  
+  type    = string
   default = "10.0.0.0/16"
   
 }
 
 variable "region" {
 
-  type = string
-  
+  type    = string
   default = "eu-west-2"
 
 }
@@ -101,9 +101,8 @@ variable "region" {
 
 variable "subnets_info" {
   
-  type = map
-  
-  default= {
+  type    = map
+  default = {
       #subnet_name = [ application , AZ , cidr block , vpc name , environment ]
 	  "public_subnet1"=["app","eu-west-2a","10.0.1.0/24","vpc1","prod"]
 	  "public_subnet2"=["app","eu-west-2b","10.0.2.0/24","vpc1","prod"]
@@ -112,14 +111,14 @@ variable "subnets_info" {
 }
 
 variable "igw_info" {
-  type = map
+  type    = map
   default = {
     "igw1" = ["vpc1"]
   }
 }
 variable "natgw_info" {
   
-  type = map
+  type    = map
   default = {
     #nat_gateway_name = [eip id , public subnet id,igw id]
     "natgw1" = ["eip1","public_subnet1","igw1"] 
@@ -130,7 +129,7 @@ variable "natgw_info" {
 
 variable "route_tables" {
 
-  type = map
+  type    = map
   default = {
      #route_type_name = [vpc ,AZ ,environment]
     "private_rt" = ["vpc1","us-west-2a","prod"]
@@ -142,7 +141,7 @@ variable "route_tables" {
 
 variable "gateway_routes" {
 
-  type = map
+  type    = map
   default = {
   
     "gtw_rt1" = ["public_rt","0.0.0.0/0","igw1"]
@@ -152,7 +151,7 @@ variable "gateway_routes" {
 
 variable "nat_gateway_routes" {
 
-  type = map
+  type    = map
   default = {
   
     "nat_gtw_rt1" = ["private_rt","0.0.0.0/0","natgw1"]
