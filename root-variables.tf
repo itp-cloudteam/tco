@@ -30,6 +30,7 @@ variable "eips" {
 
   type = map
   default = {
+    #eip name = empty string
     "eip1" = ""
     "eip2" = ""
   }
