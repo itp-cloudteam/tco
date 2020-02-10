@@ -3,6 +3,7 @@ variable "instance_info" {
   type    = map
   default = {
     #"servername" = ["ami","instance type","az","subnet","true/false","ostype","env"]
+	"server1"     = ["ami-7ad7c21e","t2.micro","eu-west-2a","public_subnet1","false","ubuntu","dev"]
   
   }
 }

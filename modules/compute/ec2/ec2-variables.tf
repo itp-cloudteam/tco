@@ -4,3 +4,9 @@ variable "instance_info" {
   
  
 }
+
+variable "subnet_info" {
+
+  type = map
+
+}

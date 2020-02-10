@@ -1,7 +1,7 @@
 provider "aws" {
   region     = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
+  access_key = "AKIAUKV5HPCPGPTFYM3H"
+  secret_key = "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"
 
 }
 
@@ -38,7 +38,7 @@ module "security_group" {
 module "security_group_rules" {
 
   source   = "github.com/itp-cloudteam/tco//modules//networking//sg_rules"
-  sg_info  = module.security_group.sg_info
+  sg_info  = module.security_group.ids
   sg_rules = var.sg_rules 
   
 }
@@ -83,6 +83,13 @@ module "gateway_routes" {
   source         = "github.com/itp-cloudteam/tco//modules//networking//route//gateway"
   gateway_routes = var.gateway_routes
   route_table_id = module.route_tables.ids
-  gateway_id     = module.igw.igw_id
+  gateway_id     = module.igw.ids
 
+}
+
+module "ec2" {    
+
+  source         = "./modules/compute/ec2"
+  instance_info  = var.instance_info
+  subnet_info    = module.subnets.ids
 }
