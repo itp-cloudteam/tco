@@ -7,3 +7,8 @@ resource "aws_route" "nat_gateway_id" {
   destination_cidr_block      = each.value[1]
   nat_gateway_id                  = var.nat_gateway_id[each.value[2]].id
 }
+
+#route_table_id = ""
+#destination_cidr_block = ""
+#destination_ipv6_cidr_block = ""
+#nat_gateway_id = ""
