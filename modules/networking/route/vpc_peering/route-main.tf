@@ -7,3 +7,8 @@ resource "aws_route" "vpc_peering_connection_id" {
   destination_cidr_block      = each.value[1]
   vpc_peering_connection_id   = var.vpc_peering_connection_id[each.value[2]].id
 }
+
+#route_table_id = ""
+#destination_cidr_block = ""
+#destination_ipv6_cidr_block = ""
+#vpc_peering_connection_id = ""
