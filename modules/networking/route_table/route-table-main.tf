@@ -10,7 +10,6 @@ resource "aws_route_table" "route_tables" {
 }
 
 #filter = ""
-#vpc_id =""
 #tags = ""
 #name = ""
 #values = ""
