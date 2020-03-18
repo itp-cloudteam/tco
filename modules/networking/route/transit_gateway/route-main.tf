@@ -9,4 +9,7 @@ resource "aws_route" "transit_gateway_id" {
   transit_gateway_id          = var.transit_gateway_id[each.value[2]].id
 }
 
-
+#route_table_id = ""
+#destination_cidr_block = ""
+#destination_ipv6_cidr_block = ""
+#transit_gateway_id = ""
