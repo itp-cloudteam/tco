@@ -1,4 +1,4 @@
-variable "vpc_info" {
+variable "cgw_info" {
 
   type = "map"
 
