@@ -4,5 +4,5 @@
    subnet_id = var.subnet_id[each.value[1]].id
    #depends_on = [var.igw]
    #tags = 
-     #Name = "${var.natgw_info["Name"]}"
+     #Name =  "${var.natgw_info["Name"]}"
  }
