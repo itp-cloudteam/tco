@@ -10,5 +10,6 @@ resource "aws_route" "vpc_peering_connection_id" {
 
 #route_table_id = ""
 #destination_cidr_block = ""
-#destination_ipv6_cidr_block = ""
 #vpc_peering_connection_id = ""
+#destination_ipv6_cidr_block = ""
+
