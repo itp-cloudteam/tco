@@ -11,5 +11,6 @@ resource "aws_route" "transit_gateway_id" {
 
 #route_table_id = ""
 #destination_cidr_block = ""
-#destination_ipv6_cidr_block = ""
 #transit_gateway_id = ""
+#destination_ipv6_cidr_block = ""
+
