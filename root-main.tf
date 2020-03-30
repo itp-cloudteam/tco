@@ -92,4 +92,4 @@ module "ec2" {
   source         = "github.com/itp-cloudteam/tco//modules//compute//ec2"
   instance_info  = var.instance_info
   subnet_info    = module.subnets.ids
-}
+ }
