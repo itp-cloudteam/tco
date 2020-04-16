@@ -1,23 +1,11 @@
 variable "eip_id"{
 
-  type = map
+  type = string
 
 }
 
 variable "subnet_id" {
 
-   type = map
-  
-}
-
-variable "igw" {
-
-  type = map
-
-}
-
-variable "natgw_info" {
-
-  type = map
+   type = string
   
 }
