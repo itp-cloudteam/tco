@@ -33,6 +33,41 @@ variable "subnet_info" {
   }
 }
 
+variable "eip_info" {
+
+  type = "map"
+
+  default = {
+
+  vpc = "true"
+  #instance = ""
+  #network_interface = ""
+  #associate_with_pravate_ip = ""
+  #public_ipv4_pool = ""
+ 
+  Name = ""
+ }
+}
+
+variable "igw_info" {
+
+  type = "map"
+  
+  default = {
+   Name=""
+  }
+}  
+
+variable "natgw_info" {
+
+  type = "map"
+  
+  default = {
+   
+  Name =  ""
+ }
+}
+
 variable "vpg_info" {
 
   type = "map"
