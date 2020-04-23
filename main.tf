@@ -38,7 +38,7 @@ module "natgw" {
 
 module "vpg" {
   source      = "./modules/networking/vpg"
-  subnet_info = var.vpg_info
+  vpg_info = var.vpg_info
 
 }
 module "cgw" {
