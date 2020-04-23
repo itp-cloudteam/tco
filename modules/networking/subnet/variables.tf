@@ -4,5 +4,8 @@ variable "subnet_info" {
 
 }
 
-
+variable "vpc_id"{
+  
+type = string  
+}
 
