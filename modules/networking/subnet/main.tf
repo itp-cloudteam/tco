@@ -1,6 +1,6 @@
 resource "aws_subnet" "subnet" {
 
-  vpc_id     = "${var.subnet_info["vpc_id"]}"
+  vpc_id     = var.vpc_id
   cidr_block = "${var.subnet_info["cidr_block"]}"
   #availability_zone    = "${var.subnet_info["availability_zone"]}"
   #availability_zone_id = "${var.subnet_info["availability_zone_id"]}"
