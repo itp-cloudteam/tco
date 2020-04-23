@@ -1,4 +1,4 @@
-resource "aws_subnet" "main" {
+resource "aws_subnet" "subnet" {
 
   vpc_id     = "${var.subnet_info["vpc_id"]}"
   cidr_block = "${var.subnet_info["cidr_block"]}"
