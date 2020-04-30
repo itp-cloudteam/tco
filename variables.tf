@@ -91,3 +91,34 @@ variable "cgw_info" {
     #Name= ""
   }
 }
+
+variable "route_tables" {
+
+  type    = map
+  default = {
+      
+    vpc_id = ""
+    route_table_id =  ""
+    #propagating_vgws = ""
+       }
+
+}
+
+variable "gateway_routes" {
+
+  type    = map
+  default = {
+  
+    #cidr_block = ""
+    #destination_cidr_block = ""
+    #destination_ipv6_cidr_block
+    #egress_only_gateway_id = ""
+    #gateway_id = ""
+    #instance_id = ""
+    nat_gateway_id = "var.natgw_info"
+    #network_interface_id = ""
+    #transit_gateway_id = ""
+    #vpc_peering_connection_id = ""
+  
+  }
+}
