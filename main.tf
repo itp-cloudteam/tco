@@ -45,3 +45,22 @@ module "cgw" {
   source   = "./modules/networking/cgw"
   cgw_info = var.cgw_info
 }
+
+  module "route_tables" {
+  
+  source = "./modules/networking/route_table"
+  
+  vpc_id = module.vpc.vpc["id"]
+  name=""
+
+}
+
+module "nat_gateway_routes" {
+
+  source = "./modules/networking/route/nat_gateway"
+  nat_route_dest_cidr_block=var.subnet_info["cidr_block"]
+  
+  route_table_id = module.route_tables.rt["id"]
+  nat_gateway_id     = module.natgw.natgw
+    
+}
